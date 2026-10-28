@@ -1,9 +1,10 @@
-export default async function handler(req, res) {
-  res.setHeader("Content-Type", "application/json");
 
+export default async function handler(req, res) {
   if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+
     return res.status(405).json({
-      error: "Method not allowed. Use POST."
+      error: "Method not allowed. Use POST.",
     });
   }
 
@@ -12,17 +13,17 @@ export default async function handler(req, res) {
 
     if (typeof message !== "string" || !message.trim()) {
       return res.status(400).json({
-        error: "Please enter a message."
+        error: "Please enter a message.",
       });
     }
 
     const apiKey = process.env.GROQ_API_KEY;
 
     if (!apiKey) {
-      console.error("GROQ_API_KEY is not configured.");
+      console.error("GROQ_API_KEY is missing.");
 
       return res.status(500).json({
-        error: "Missing GROQ_API_KEY environment variable in Vercel."
+        error: "Server configuration error. API key is missing.",
       });
     }
 
@@ -32,7 +33,7 @@ export default async function handler(req, res) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: Bearer ${apiKey}
+          Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
@@ -40,16 +41,16 @@ export default async function handler(req, res) {
             {
               role: "system",
               content:
-                "You are the AI assistant for Pratik Singh's CSE portfolio. Answer questions helpfully. Do not invent personal details, skills, education, or projects."
+                "You are the AI assistant for Pratik Singh's CSE portfolio. Answer questions helpfully and clearly about the portfolio. Do not invent personal details, education, skills, or projects that have not been provided.",
             },
             {
               role: "user",
-              content: message.trim()
-            }
+              content: message.trim(),
+            },
           ],
           temperature: 0.7,
-          max_tokens: 500
-        })
+          max_tokens: 500,
+        }),
       }
     );
 
@@ -59,10 +60,13 @@ export default async function handler(req, res) {
     try {
       data = JSON.parse(raw);
     } catch {
-      console.error("Groq returned non-JSON:", response.status);
+      console.error(
+        "Groq returned invalid JSON. Status:",
+        response.status
+      );
 
       return res.status(502).json({
-        error: "The AI provider returned an invalid response."
+        error: "The AI provider returned an invalid response.",
       });
     }
 
@@ -72,7 +76,7 @@ export default async function handler(req, res) {
       return res.status(502).json({
         error:
           data.error?.message ||
-          Groq request failed with status ${response.status}.
+          `Groq request failed with status ${response.status}.`,
       });
     }
 
@@ -80,18 +84,19 @@ export default async function handler(req, res) {
 
     if (typeof reply !== "string" || !reply.trim()) {
       return res.status(502).json({
-        error: "The AI provider returned an empty response."
+        error: "The AI provider returned an empty response.",
       });
     }
 
     return res.status(200).json({
-      reply: reply.trim()
+      reply: reply.trim(),
     });
   } catch (error) {
-    console.error("Chat backend error:", error);
+    console.error("Chat server error:", error);
 
     return res.status(500).json({
-      error: "Chat server error. Check Vercel function logs."
+      error: "An internal chatbot error occurred. Please try again.",
     });
   }
 }
+
