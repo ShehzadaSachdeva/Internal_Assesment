@@ -1,46 +1,41 @@
 
-(() => {
-  // Update the footer year if this element exists.
-  const year = document.getElementById("year");
+/* ===== GROQ AI CHATBOT ===== */
 
-  if (year) {
-    year.textContent = String(new Date().getFullYear());
-  }
+const chatForm = document.getElementById("chat-form");
+const chatInput = document.getElementById("chat-input");
+const chatLog = document.getElementById("chat-log");
 
-  const form = document.getElementById("chat-form");
-  const input = document.getElementById("chat-input");
-  const messages = document.getElementById("chat-messages");
-  const sendButton = document.getElementById("chat-submit");
-
-  // Don't initialize chat if these elements aren't in your HTML.
-  if (!form || !input || !messages) {
-    console.warn("Chat elements not found. Check your HTML IDs.");
-    return;
-  }
-
-  function addMessage(text, sender) {
-    const bubble = document.createElement("div");
-    bubble.className = `chat-message ${sender}`;
-    bubble.textContent = text;
-    messages.appendChild(bubble);
-    messages.scrollTop = messages.scrollHeight;
-    return bubble;
-  }
-
-  form.addEventListener("submit", async (event) => {
+if (chatForm && chatInput && chatLog) {
+  chatForm.addEventListener("submit", async function (event) {
+    // IMPORTANT: Stop the browser from refreshing the page.
     event.preventDefault();
 
-    const message = input.value.trim();
+    const message = chatInput.value.trim();
 
     if (!message) return;
 
-    addMessage(message, "user");
-    input.value = "";
-    input.disabled = true;
+    // Display the user's message.
+    const userBubble = document.createElement("p");
+    userBubble.className = "chat-bubble user";
+    userBubble.textContent = message;
+    chatLog.appendChild(userBubble);
+
+    chatInput.value = "";
+    chatInput.disabled = true;
+
+    const sendButton = chatForm.querySelector(
+      'button[type="submit"]'
+    );
 
     if (sendButton) sendButton.disabled = true;
 
-    const loading = addMessage("Thinking...", "bot");
+    // Display a loading message.
+    const loadingBubble = document.createElement("p");
+    loadingBubble.className = "chat-bubble system";
+    loadingBubble.textContent = "Thinking...";
+    chatLog.appendChild(loadingBubble);
+
+    chatLog.scrollTop = chatLog.scrollHeight;
 
     try {
       const response = await fetch("/api/chat", {
@@ -53,29 +48,37 @@
 
       const data = await response.json();
 
-      loading.remove();
-
       if (!response.ok) {
-        throw new Error(data.error || "Chat request failed.");
+        throw new Error(
+          data.error || `Request failed (${response.status})`
+        );
       }
 
-      addMessage(data.reply, "bot");
+      if (typeof data.reply !== "string") {
+        throw new Error("The server returned no chatbot reply.");
+      }
+
+      loadingBubble.textContent = data.reply;
+      loadingBubble.className = "chat-bubble bot";
     } catch (error) {
-      loading.remove();
+      console.error("Chatbot error:", error);
 
-      addMessage(
-        error.message || "Unable to connect. Please try again.",
-        "bot"
-      );
+      loadingBubble.textContent =
+        "Sorry, I couldn't respond. " +
+        (error.message || "Please try again.");
 
-      console.error("Chat error:", error);
+      loadingBubble.className = "chat-bubble system";
     } finally {
-      input.disabled = false;
+      chatInput.disabled = false;
 
       if (sendButton) sendButton.disabled = false;
 
-      input.focus();
+      chatLog.scrollTop = chatLog.scrollHeight;
+      chatInput.focus();
     }
   });
-})();
+}
+
+/* ===== END GROQ AI CHATBOT ===== */
+
 
