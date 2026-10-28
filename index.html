@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal portfolio of a first-year Computer Science Engineering student specializing in AI and Data Science."
+    />
+    <title>Shehzada Sachdeva | CSE Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="#home">Shehzada Sachdeva</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="site-nav"
+          aria-expanded="false"
+          aria-label="Open menu"
+        >
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#chatbot">AI Chatbot</a></li>
+          </ul>
+        </nav>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-pressed="false"
+          aria-label="Switch to dark mode"
+        >
+          <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle-text">Dark</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="home" class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">First-year Computer Science Engineering</p>
+        <h1 id="hero-title">Hi, I am Shehzada Sachdeva</h1>
+        <p class="hero-lead">
+          I am a first-year CSE student specializing in
+          <strong>Artificial Intelligence and Data Science</strong>. I am
+          learning to build clear programs, useful web pages, and beginner AI
+          experiments.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">View projects</a>
+          <a class="button button-secondary" href="#contact">Contact me</a>
+        </div>
+      </section>
+
+      <section id="about" aria-labelledby="about-title">
+        <h2 id="about-title">About Me</h2>
+        <p>
+          Replace this paragraph with a short introduction. Mention your
+          college, why you chose CSE with AI and Data Science, and what you
+          enjoy building. Keep it honest and beginner-friendly.
+        </p>
+        <ul class="about-facts">
+          <li><strong>Name:</strong> [YOUR FULL NAME]</li>
+          <li><strong>Program:</strong> B.E. / B.Tech Computer Science Engineering</li>
+          <li><strong>Specialization:</strong> AI and Data Science</li>
+          <li><strong>Year:</strong> First year</li>
+          <li><strong>Location:</strong> Jaipur,Rajasthan</li>
+        </ul>
+      </section>
+
+      <section id="education" aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
+        <article class="card education-card">
+          <h3>Jecrc University</h3>
+          <p class="muted">
+            Computer Science Engineering — AI and Data Science specialization
+          </p>
+          <p>2025 – 2029</p>
+          <p>
+            Currently in first year. Coursework so far includes programming
+            fundamentals, problem solving, and introductory computing. Add
+            current subjects here.
+          </p>
+        </article>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-title">
+        <h2 id="skills-title">Skills</h2>
+        <p>These are beginner skills I am building. Update this list as you learn.</p>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Git basics</li>
+          <li>Problem solving</li>
+          <li>Introductory AI concepts</li>
+          <li>Introductory data analysis</li>
+        </ul>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">Projects</h2>
+        <p>
+          Search by title, description, or technology. Replace every
+          <code>[REPOSITORY URL]</code> and <code>[LIVE APP URL]</code> with
+          your real links when they exist.
+        </p>
+        <div class="search-bar">
+          <label for="project-search">Search projects</label>
+          <input
+            id="project-search"
+            type="search"
+            placeholder="Try Python, quiz, or Cursor"
+            autocomplete="off"
+          />
+        </div>
+        <p id="project-status" class="search-status" aria-live="polite"></p>
+        <div id="project-grid" class="project-grid">
+          <article
+            class="card project-card"
+            data-title="Python Programs Collection"
+            data-description="A beginner collection of Python programs covering factorial, Fibonacci sequence, and converting a structure into a dictionary."
+            data-tech="python programming fundamentals loops recursion dictionaries"
+          >
+            <h3>Python Programs Collection</h3>
+            <p>
+              A beginner collection of Python programs covering factorial,
+              Fibonacci sequence, and converting a structure into a dictionary.
+            </p>
+            <p class="tech-tags">
+              <span>Python</span>
+              <span>Fundamentals</span>
+            </p>
+            <p class="project-links">
+              <a href="https://github.com/ShehzadaSachdeva/pythonprogramming">Repository</a>
+              <a href="[LIVE APP URL]">Live app</a>
+            </p>
+          </article>
+
+          <article
+            class="card project-card"
+            data-title="Messy Python Code Improvement"
+            data-description="Practice cleaning messy Python code by renaming variables, adding comments, and making the logic easier to read."
+            data-tech="python refactoring code quality readability"
+          >
+            <h3>Messy Python Code Improvement</h3>
+            <p>
+              Practice cleaning messy Python code by renaming variables, adding
+              comments, and making the logic easier to read.
+            </p>
+            <p class="tech-tags">
+              <span>Python</span>
+              <span>Refactoring</span>
+            </p>
+            <p class="project-links">
+              <a href="https://github.com/ShehzadaSachdeva/messey-python">Repository</a>
+              <a href="[LIVE APP URL]">Live app</a>
+            </p>
+          </article>
+
+          <article
+            class="card project-card"
+            data-title="Bug Fixing Using Cursor AI"
+            data-description="A learning project about finding and fixing bugs with help from Cursor AI, then explaining the change in simple words."
+            data-tech="debugging cursor ai python javascript troubleshooting"
+          >
+            <h3>Bug Fixing Using Cursor AI</h3>
+            <p>
+              A learning project about finding and fixing bugs with help from
+              Cursor AI, then explaining the change in simple words.
+            </p>
+            <p class="tech-tags">
+              <span>Debugging</span>
+              <span>Cursor AI</span>
+            </p>
+            <p class="project-links">
+              <a href="https://github.com/ShehzadaSachdeva/bugfixing">Repository</a>
+              <a href="[LIVE APP URL]">Live app</a>
+            </p>
+          </article>
+
+          <article
+            class="card project-card"
+            data-title="Interactive Quiz Application"
+            data-description="A browser quiz that asks questions, checks answers, and shows a score. Built with HTML, CSS, and JavaScript."
+            data-tech="html css javascript quiz frontend"
+          >
+            <h3>Interactive Quiz Application</h3>
+            <p>
+              A browser quiz that asks questions, checks answers, and shows a
+              score. Built with HTML, CSS, and JavaScript.
+            </p>
+            <p class="tech-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </p>
+            <p class="project-links">
+              <a href="https://github.com/ShehzadaSachdeva/bugfixing">Repository</a>
+              <a href="[LIVE APP URL]">Live app</a>
+            </p>
+          </article>
+
+          <article
+            class="card project-card"
+            data-title="Book Reading List Application"
+            data-description="A simple app for tracking books you want to read, books you are reading, and books you have finished."
+            data-tech="html css javascript books list local storage"
+          >
+            <h3>Book Reading List Application</h3>
+            <p>
+              A simple app for tracking books you want to read, books you are
+              reading, and books you have finished.
+            </p>
+            <p class="tech-tags">
+              <span>HTML</span>
+              <span>JavaScript</span>
+              <span>Lists</span>
+            </p>
+            <p class="project-links">
+              <a href="https://github.com/ShehzadaSachdeva/book--reading--list-">Repository</a>
+              <a href="[LIVE APP URL]">Live app</a>
+            </p>
+          </article>
+        </div>
+        <p id="empty-search" class="empty-search" hidden>
+          No projects match your search. Try a different word, such as Python,
+          quiz, or book.
+        </p>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p>Replace every placeholder below with your real contact details.</p>
+        <address class="contact-card card">
+          <p><strong>Email:</strong> shehzadsachdeva297@gmail.com</p>
+          <p><strong>Phone:</strong> 9829136365</p>
+          <p><strong>Location:</strong> Jagatpura</p>
+          <p>
+            <strong>GitHub:</strong>
+            <a href="https://github.com/">[YOUR GITHUB PROFILE URL]</a>
+          </p>
+          <p>
+            <strong>LinkedIn:</strong>
+            <a href="[YOUR LINKEDIN URL]">https://www.linkedin.com/in/shehzada-sachdeva-2376b0382?utm_source=share_via&utm_content=profile&utm_medium=member_ios</a>
+          </p>
+        </address>
+      </section>
+
+      <section id="chatbot" aria-labelledby="chatbot-title">
+        <h2 id="chatbot-title">AI Chatbot Interface</h2>
+        <p class="notice">
+          This is a <strong>preview interface only</strong>. It is not connected
+          to an AI API. Later you can connect it in <code>script.js</code>, in
+          the comment labeled for API integration. Do not put API keys in this
+          website.
+        </p>
+        <div class="chatbot" aria-label="Chatbot preview">
+          <div id="chat-log" class="chat-log" role="log" aria-live="polite">
+            <p class="chat-bubble system">
+              Chatbot preview: not connected. Messages stay on this page and are
+              not sent to a server.
+            </p>
+          </div>
+          <form id="chat-form" class="chat-form">
+            <label for="chat-input">Message</label>
+            <div class="chat-row">
+              <input
+                id="chat-input"
+                type="text"
+                maxlength="400"
+                placeholder="Type a message"
+                autocomplete="off"
+              />
+              <button class="button button-primary" type="submit">Send</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> [YOUR FULL NAME]. Student portfolio.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
